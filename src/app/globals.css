@@ -1,0 +1,633 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700&display=swap');
+@import "tailwindcss";
+
+/* ==========================================================================
+   BUILDCHEX DESIGN SYSTEM v2
+   Strict token system · 8pt grid · Inter + Inter Tight · Teal accent
+   Airbnb / Stripe / Glassdoor quality
+   ========================================================================== */
+
+:root {
+  /* --- Colors --- */
+  --color-teal: #1ab394;
+  --color-teal-dark: #159479;
+  --color-teal-light: #e8f7f3;
+  --color-charcoal: #1a1d1f;
+  --color-slate: #6b7280;
+  --color-muted: #9ca3af;
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f9fafb;
+  --color-bg-muted: #f3f4f6;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* --- Font Families --- */
+  --font-heading: "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* --- Typography Scale (Desktop) --- */
+  --text-h1: 3.75rem;       /* 60px */
+  --text-h2: 2.5rem;        /* 40px */
+  --text-h3: 1.75rem;       /* 28px */
+  --text-body-lg: 1.25rem;  /* 20px */
+  --text-body: 1rem;         /* 16px */
+  --text-small: 0.875rem;   /* 14px */
+
+  /* --- Typography Scale (Mobile) --- */
+  --text-h1-mobile: 2.25rem;    /* 36px */
+  --text-h2-mobile: 1.625rem;   /* 26px */
+  --text-h3-mobile: 1.25rem;    /* 20px */
+  --text-body-lg-mobile: 1rem;  /* 16px */
+
+  /* --- Line Heights --- */
+  --leading-heading: 1.15;
+  --leading-body: 1.55;
+
+  /* --- Font Weights --- */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 600;
+
+  /* --- Spacing (8pt grid) --- */
+  --space-1: 0.5rem;     /* 8px */
+  --space-2: 1rem;       /* 16px */
+  --space-3: 1.5rem;     /* 24px */
+  --space-4: 2rem;       /* 32px */
+  --space-5: 3rem;       /* 48px */
+  --space-6: 4rem;       /* 64px */
+  --space-7: 5rem;       /* 80px */
+  --space-8: 7.5rem;     /* 120px */
+
+  /* --- Border Radius --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* --- Shadows --- */
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  /* --- Transitions --- */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration: 200ms;
+  --duration-slow: 300ms;
+
+  /* --- Layout --- */
+  --container-max: 1200px;
+  --container-narrow: 720px;
+  --container-padding: 1rem;      /* 16px mobile */
+  --section-py: var(--space-6);   /* 64px mobile */
+}
+
+@media (min-width: 640px) {
+  :root {
+    --container-padding: 1.5rem;    /* 24px tablet+ */
+    --section-py: var(--space-7);   /* 80px desktop */
+  }
+}
+
+@theme inline {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-teal: var(--color-teal);
+  --color-charcoal: var(--color-charcoal);
+  --color-slate: var(--color-slate);
+  --color-light-gray: var(--color-bg-muted);
+}
+
+/* ==========================================================================
+   BASE RESETS
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-charcoal);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-teal);
+  color: white;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
+.heading-1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1-mobile);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: -0.025em;
+  color: var(--color-charcoal);
+}
+
+@media (min-width: 640px) {
+  .heading-1 {
+    font-size: var(--text-h1);
+  }
+}
+
+.heading-2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2-mobile);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: -0.02em;
+  color: var(--color-charcoal);
+}
+
+@media (min-width: 640px) {
+  .heading-2 {
+    font-size: var(--text-h2);
+  }
+}
+
+.heading-3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3-mobile);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: -0.01em;
+  color: var(--color-charcoal);
+}
+
+@media (min-width: 640px) {
+  .heading-3 {
+    font-size: var(--text-h3);
+  }
+}
+
+.heading-4 {
+  font-family: var(--font-heading);
+  font-size: var(--text-body);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-heading);
+  color: var(--color-charcoal);
+}
+
+@media (min-width: 640px) {
+  .heading-4 {
+    font-size: var(--text-body-lg);
+  }
+}
+
+.body-lg {
+  font-size: var(--text-body-lg-mobile);
+  line-height: var(--leading-body);
+  color: var(--color-slate);
+}
+
+@media (min-width: 640px) {
+  .body-lg {
+    font-size: var(--text-body-lg);
+  }
+}
+
+.body {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-slate);
+}
+
+.body-sm {
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  color: var(--color-slate);
+}
+
+.label {
+  font-size: 0.6875rem;
+  font-weight: var(--font-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   COLOR UTILITIES
+   ========================================================================== */
+
+.text-teal { color: var(--color-teal); }
+.text-charcoal { color: var(--color-charcoal); }
+.text-slate { color: var(--color-slate); }
+.text-muted { color: var(--color-muted); }
+.bg-teal { background-color: var(--color-teal); }
+.bg-charcoal { background-color: var(--color-charcoal); }
+.bg-subtle { background-color: var(--color-bg-subtle); }
+.bg-muted { background-color: var(--color-bg-muted); }
+.border-teal { border-color: var(--color-teal); }
+
+.hover\:bg-teal:hover { background-color: var(--color-teal); }
+.hover\:text-teal:hover { color: var(--color-teal); }
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
+.container-site {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Section spacing — mobile-first */
+.section {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}
+
+.section-sm {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
+}
+
+@media (min-width: 640px) {
+  .section-sm {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+  }
+}
+
+/* ==========================================================================
+   BUTTONS — pill-shaped, 48–56px height, tactile active states
+   ========================================================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-body);
+  color: white;
+  background-color: var(--color-teal);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  white-space: nowrap;
+  -webkit-appearance: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-teal-dark);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+  background-color: #12907a;
+  box-shadow: none;
+  transition-duration: 80ms;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary:disabled:hover {
+  background-color: var(--color-teal);
+  box-shadow: none;
+}
+
+.btn-primary:disabled:active {
+  transform: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-body);
+  color: var(--color-charcoal);
+  background-color: var(--color-bg-muted);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  white-space: nowrap;
+  -webkit-appearance: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-border);
+}
+
+.btn-secondary:active {
+  transform: scale(0.97);
+  background-color: #d1d5db;
+  transition-duration: 80ms;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-body);
+  color: var(--color-teal);
+  background-color: transparent;
+  border: 2px solid var(--color-teal);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  white-space: nowrap;
+  -webkit-appearance: none;
+}
+
+.btn-outline:hover {
+  color: white;
+  background-color: var(--color-teal);
+}
+
+.btn-outline:active {
+  transform: scale(0.97);
+  background-color: var(--color-teal-dark);
+  border-color: var(--color-teal-dark);
+  color: white;
+  transition-duration: 80ms;
+}
+
+/* Larger button variant — 56px */
+.btn-lg {
+  min-height: 56px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-body-lg-mobile);
+  border-radius: var(--radius-pill);
+}
+
+/* Full-width on mobile */
+.btn-mobile-full {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .btn-mobile-full {
+    width: auto;
+  }
+}
+
+/* ==========================================================================
+   INPUTS — 56px height, pill shape, shadow-soft
+   ========================================================================== */
+
+.input-base {
+  width: 100%;
+  min-height: 56px;
+  padding: 0 var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-body);   /* 16px prevents iOS zoom */
+  font-weight: var(--font-medium);
+  line-height: var(--leading-body);
+  color: var(--color-charcoal);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-soft);
+  outline: none;
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  -webkit-appearance: none;
+}
+
+.input-base::placeholder {
+  color: var(--color-muted);
+}
+
+.input-base:hover {
+  border-color: var(--color-slate);
+}
+
+.input-base:focus {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(26, 179, 148, 0.12), var(--shadow-soft);
+}
+
+/* Textarea override — pill doesn't suit multiline */
+textarea.input-base {
+  border-radius: var(--radius-lg);
+  padding: var(--space-2) var(--space-3);
+}
+
+/* Select override — needs vertical padding */
+select.input-base {
+  padding: var(--space-2) var(--space-3);
+}
+
+/* ==========================================================================
+   CARDS — 24px padding, 16px radius, shadow-soft
+   ========================================================================== */
+
+.card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow var(--duration) var(--ease), transform var(--duration) var(--ease);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.card:active {
+  transform: scale(0.985);
+  box-shadow: var(--shadow-soft);
+  transition-duration: 80ms;
+}
+
+/* No hover lift on touch devices */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow-soft);
+  }
+  .card:active {
+    transform: scale(0.985);
+    background-color: var(--color-bg-subtle);
+  }
+}
+
+.card-static {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ==========================================================================
+   TAP TARGETS & LINK INTERACTIONS
+   ========================================================================== */
+
+.tap-target {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.link-row {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--duration) var(--ease);
+}
+
+.link-teal {
+  color: var(--color-teal);
+  font-weight: var(--font-bold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-1) 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--duration) var(--ease), opacity var(--duration) var(--ease);
+}
+
+.link-teal:hover {
+  color: var(--color-teal-dark);
+}
+
+.link-teal:active {
+  opacity: 0.7;
+  transition-duration: 80ms;
+}
+
+/* ==========================================================================
+   FOCUS STATES
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   PROSE STYLING (legal/content pages)
+   ========================================================================== */
+
+.prose-content p {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-slate);
+  margin-bottom: var(--space-3);
+}
+
+.prose-content ul {
+  padding-left: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.prose-content li {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-slate);
+  margin-bottom: var(--space-1);
+}
+
+.prose-content h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3-mobile);
+  font-weight: 700;
+  color: var(--color-charcoal);
+  margin-bottom: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .prose-content h2 {
+    font-size: var(--text-h3);
+  }
+}
+
+.prose-content h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-body);
+  font-weight: 700;
+  color: var(--color-charcoal);
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .prose-content h3 {
+    font-size: var(--text-body-lg);
+  }
+}
+
+.prose-content section {
+  margin-bottom: var(--space-5);
+}
+
+@media (min-width: 640px) {
+  .prose-content section {
+    margin-bottom: var(--space-6);
+  }
+}
+
+.prose-content section:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   MOBILE UTILITY — safe area for iPhone notch/home bar
+   ========================================================================== */
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
