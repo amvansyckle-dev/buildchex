@@ -81,42 +81,23 @@
   --container-max: 1200px;
   --container-narrow: 720px;
   --container-text: 760px;         /* max-width for readable text blocks */
-  --container-padding: 1rem;       /* 16px mobile */
-  --section-py: var(--space-6);    /* 64px mobile */
 
-  /* --- Hero-specific spacing (tighter on desktop) --- */
-  --hero-gap-title: var(--space-3);    /* 24px — headline → subtext */
-  --hero-gap-body: var(--space-4);     /* 32px — subtext → search */
-  --hero-gap-footer: var(--space-3);   /* 24px — search → footer text */
-  --hero-py: var(--space-6);           /* 64px — hero vertical padding */
+  /* --- Responsive spacing with clamp() ---
+     All layout spacing scales smoothly between mobile (375px) and desktop (1200px).
+     Format: clamp(mobile-min, fluid-vw, desktop-max)
+     The vw values are tuned so spacing compresses on desktop — editorial density. */
 
-  /* --- Section header spacing --- */
-  --section-heading-mb: var(--space-4);  /* 32px — heading → content */
-}
+  --container-padding: clamp(1rem, 2.5vw, 2rem);             /* 16px → 32px */
+  --section-py: clamp(2.5rem, 5vw, 3.5rem);                  /* 40px → 56px */
 
-@media (min-width: 640px) {
-  :root {
-    --container-padding: 1.5rem;     /* 24px tablet+ */
-    --section-py: 3.5rem;            /* 56px desktop — tighter than mobile feel */
+  /* Hero: compact and conversion-focused, tighter than body sections */
+  --hero-py: clamp(2rem, 4vw, 3rem);                          /* 32px → 48px */
+  --hero-gap-title: clamp(0.5rem, 1.2vw, 0.75rem);            /* 8px → 12px */
+  --hero-gap-body: clamp(1rem, 2vw, 1.25rem);                 /* 16px → 20px */
+  --hero-gap-footer: clamp(0.5rem, 1.2vw, 0.75rem);           /* 8px → 12px */
 
-    /* Hero tightens on desktop for editorial density */
-    --hero-gap-title: var(--space-2);    /* 16px */
-    --hero-gap-body: var(--space-3);     /* 24px */
-    --hero-gap-footer: var(--space-2);   /* 16px */
-    --hero-py: var(--space-5);           /* 48px — compact hero */
-
-    /* Section headers get less space on desktop */
-    --section-heading-mb: var(--space-4);  /* 32px */
-  }
-}
-
-/* Wider desktops get slightly more breathing room between sections, but still tight */
-@media (min-width: 1024px) {
-  :root {
-    --section-py: 4rem;              /* 64px on large desktop */
-    --hero-py: 3.5rem;               /* 56px — still compact */
-    --container-padding: 2rem;       /* 32px */
-  }
+  /* Section header → content gap */
+  --section-heading-mb: clamp(1.25rem, 2.5vw, 1.5rem);        /* 20px → 24px */
 }
 
 @theme inline {
