@@ -6,25 +6,25 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section
-        className="section"
+        className="section-hero"
         style={{
           background: "linear-gradient(to bottom, var(--color-bg-subtle), var(--color-bg))",
         }}
       >
         <div className="container-site">
-          <div style={{ maxWidth: "var(--container-narrow)", margin: "0 auto", textAlign: "center" }}>
+          <div style={{ maxWidth: "var(--container-text)", margin: "0 auto", textAlign: "center" }}>
             <h1
               className="heading-1"
-              style={{ marginBottom: "var(--space-3)" }}
+              style={{ marginBottom: "var(--hero-gap-title)" }}
             >
               Know before you build.
             </h1>
             <p
               className="body-lg"
               style={{
-                maxWidth: "544px",
+                maxWidth: "540px",
                 margin: "0 auto",
-                marginBottom: "var(--space-5)",
+                marginBottom: "var(--hero-gap-body)",
               }}
             >
               Real experiences from New Jersey homeowners. Anonymous, AI-moderated,
@@ -32,7 +32,7 @@ export default function Home() {
             </p>
 
             {/* Search Bar */}
-            <div style={{ marginBottom: "var(--space-5)" }}>
+            <div style={{ maxWidth: "600px", margin: "0 auto", marginBottom: "var(--hero-gap-footer)" }}>
               <SearchBar />
             </div>
 
@@ -48,7 +48,7 @@ export default function Home() {
         <div className="container-site">
           <h2
             className="heading-2"
-            style={{ textAlign: "center", marginBottom: "var(--space-5)" }}
+            style={{ textAlign: "center", marginBottom: "var(--section-heading-mb)" }}
           >
             How It Works
           </h2>
@@ -126,7 +126,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div style={{ textAlign: "center", marginTop: "var(--space-5)" }}>
+          <div style={{ textAlign: "center", marginTop: "var(--space-4)" }}>
             <Link
               href="/how-it-works"
               className="link-teal"
@@ -153,7 +153,7 @@ export default function Home() {
               textAlign: "center",
               maxWidth: "480px",
               margin: "0 auto",
-              marginBottom: "var(--space-5)",
+              marginBottom: "var(--section-heading-mb)",
             }}
           >
             Transparency tools designed for real homeowners.
@@ -162,13 +162,13 @@ export default function Home() {
           {/* Vertical stacked cards on mobile, 2-col grid on md+ */}
           <div
             style={{
-              maxWidth: "880px",
+              maxWidth: "var(--container-text)",
               margin: "0 auto",
               display: "flex",
               flexDirection: "column",
               gap: "var(--space-3)",
             }}
-            className="md:grid md:grid-cols-2 md:gap-8"
+            className="md:grid md:grid-cols-2 md:gap-6"
           >
             {[
               {
@@ -242,11 +242,11 @@ export default function Home() {
       <section className="section" style={{ backgroundColor: "var(--color-bg)" }}>
         <div
           className="container-site"
-          style={{ textAlign: "center", maxWidth: "var(--container-narrow)" }}
+          style={{ textAlign: "center", maxWidth: "var(--container-text)" }}
         >
           <h2
             className="heading-2"
-            style={{ marginBottom: "var(--space-3)" }}
+            style={{ marginBottom: "var(--space-2)" }}
           >
             Had a renovation recently?
           </h2>
@@ -254,7 +254,7 @@ export default function Home() {
             className="body-lg"
             style={{
               maxWidth: "520px",
-              margin: "0 auto var(--space-4)",
+              margin: "0 auto var(--space-3)",
             }}
           >
             Share your experience and help other New Jersey homeowners make

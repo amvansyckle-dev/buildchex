@@ -80,14 +80,42 @@
   /* --- Layout --- */
   --container-max: 1200px;
   --container-narrow: 720px;
-  --container-padding: 1rem;      /* 16px mobile */
-  --section-py: var(--space-6);   /* 64px mobile */
+  --container-text: 760px;         /* max-width for readable text blocks */
+  --container-padding: 1rem;       /* 16px mobile */
+  --section-py: var(--space-6);    /* 64px mobile */
+
+  /* --- Hero-specific spacing (tighter on desktop) --- */
+  --hero-gap-title: var(--space-3);    /* 24px — headline → subtext */
+  --hero-gap-body: var(--space-4);     /* 32px — subtext → search */
+  --hero-gap-footer: var(--space-3);   /* 24px — search → footer text */
+  --hero-py: var(--space-6);           /* 64px — hero vertical padding */
+
+  /* --- Section header spacing --- */
+  --section-heading-mb: var(--space-4);  /* 32px — heading → content */
 }
 
 @media (min-width: 640px) {
   :root {
-    --container-padding: 1.5rem;    /* 24px tablet+ */
-    --section-py: var(--space-7);   /* 80px desktop */
+    --container-padding: 1.5rem;     /* 24px tablet+ */
+    --section-py: 3.5rem;            /* 56px desktop — tighter than mobile feel */
+
+    /* Hero tightens on desktop for editorial density */
+    --hero-gap-title: var(--space-2);    /* 16px */
+    --hero-gap-body: var(--space-3);     /* 24px */
+    --hero-gap-footer: var(--space-2);   /* 16px */
+    --hero-py: var(--space-5);           /* 48px — compact hero */
+
+    /* Section headers get less space on desktop */
+    --section-heading-mb: var(--space-4);  /* 32px */
+  }
+}
+
+/* Wider desktops get slightly more breathing room between sections, but still tight */
+@media (min-width: 1024px) {
+  :root {
+    --section-py: 4rem;              /* 64px on large desktop */
+    --hero-py: 3.5rem;               /* 56px — still compact */
+    --container-padding: 2rem;       /* 32px */
   }
 }
 
@@ -276,11 +304,10 @@ body {
   padding-bottom: var(--space-5);
 }
 
-@media (min-width: 640px) {
-  .section-sm {
-    padding-top: var(--space-6);
-    padding-bottom: var(--space-6);
-  }
+/* Hero section — uses dedicated hero tokens for tighter desktop feel */
+.section-hero {
+  padding-top: var(--hero-py);
+  padding-bottom: var(--hero-py);
 }
 
 /* ==========================================================================
