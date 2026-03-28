@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Nav() {
@@ -38,24 +39,15 @@ export default function Nav() {
           }}
         >
           {/* Logo */}
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "4px", flexShrink: 0, textDecoration: "none" }}>
-            <span style={{ fontWeight: 700, fontSize: "var(--text-h3-mobile)" }}>
-              <span style={{ color: "var(--color-charcoal)" }}>Build</span>
-              <span style={{ position: "relative" }}>
-                <span style={{ color: "var(--color-teal)" }}>Chex</span>
-                <span
-                  style={{
-                    position: "absolute",
-                    top: "-8px",
-                    left: 0,
-                    color: "var(--color-teal)",
-                    fontSize: "var(--text-small)",
-                  }}
-                >
-                  ▲
-                </span>
-              </span>
-            </span>
+          <Link href="/" style={{ display: "flex", alignItems: "center", flexShrink: 0, textDecoration: "none" }}>
+            <Image
+              src="/logo.svg"
+              alt="BuildChex"
+              width={140}
+              height={30}
+              priority
+              style={{ height: "auto" }}
+            />
           </Link>
 
           {/* Desktop Menu */}

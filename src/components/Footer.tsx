@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -30,10 +31,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div style={{ marginBottom: "var(--space-2)" }}>
-              <span style={{ fontWeight: 700, fontSize: "var(--text-h3-mobile)" }}>
-                <span style={{ color: "white" }}>Build</span>
-                <span style={{ color: "var(--color-teal)" }}>Chex</span>
-              </span>
+              <Image
+                src="/logo-light.svg"
+                alt="BuildChex"
+                width={130}
+                height={28}
+                style={{ height: "auto" }}
+              />
             </div>
             <p style={{ color: "var(--color-muted)", fontSize: "var(--text-small)", fontStyle: "italic" }}>
               Built by homeowners, for homeowners
